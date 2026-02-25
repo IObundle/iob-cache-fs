@@ -1,0 +1,21 @@
+% SPDX-FileCopyrightText: 2025 IObundle, Lda
+%
+% SPDX-License-Identifier: MIT
+%
+% Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+
+WTB\_EMPTY & R & 0x0 & 1 & 8 & 0 & Write-through buffer empty (1) or non-empty (0). \\ \hline
+\rowcolor{iob-blue}
+WTB\_FULL & R & 0x1 & 1 & 8 & 0 & Write-through buffer full (1) or non-full (0). \\ \hline
+RW\_HIT & R & 0x4 & 32 & 32 & 0 & Read and write hit counter. \\ \hline
+\rowcolor{iob-blue}
+RW\_MISS & R & 0x8 & 32 & 32 & 0 & Read and write miss counter. \\ \hline
+READ\_HIT & R & 0xC & 32 & 32 & 0 & Read hit counter. \\ \hline
+\rowcolor{iob-blue}
+READ\_MISS & R & 0x10 & 32 & 32 & 0 & Read miss counter. \\ \hline
+WRITE\_HIT & R & 0x14 & 32 & 32 & 0 & Write hit counter. \\ \hline
+\rowcolor{iob-blue}
+WRITE\_MISS & R & 0x18 & 32 & 32 & 0 & Write miss counter. \\ \hline
+RST\_CNTRS & W & 0x1C & 1 & 8 & 0 & Reset read/write hit/miss counters by writing any value to this register. \\ \hline
+\rowcolor{iob-blue}
+INVALIDATE & W & 0x1D & 1 & 8 & 0 & Invalidate the cache data contents by writing any value to this register. \\ \hline

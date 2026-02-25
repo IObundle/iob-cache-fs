@@ -1,0 +1,33 @@
+% SPDX-FileCopyrightText: 2025 IObundle, Lda
+%
+% SPDX-License-Identifier: MIT
+%
+% Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+
+LRU & M & ? & 0 & ? & Least Recently Used -- more resources intensive - N*log2(N) bits per cache line - Uses counters \\ \hline
+\rowcolor{iob-blue}
+PLRU\_MRU & M & ? & 1 & ? & bit-based Pseudo-Least-Recently-Used, a simpler replacement policy than LRU, using a much lower complexity (lower resources) - N bits per cache line \\ \hline
+PLRU\_TREE & M & ? & 2 & ? & tree-based Pseudo-Least-Recently-Used, uses a tree that updates after any way received an hit, and points towards the oposing one. Uses less resources than bit-pseudo-lru - N-1 bits per cache line \\ \hline
+\rowcolor{iob-blue}
+WRITE\_THROUGH & M & ? & 0 & ? & write-through not allocate: implements a write-through buffer \\ \hline
+WRITE\_BACK & M & ? & 1 & ? & write-back allocate: implementes a dirty-memory \\ \hline
+\rowcolor{iob-blue}
+ADDR\_W\_CSRS & M & ? & 5 & ? & Address width of CSRs \\ \hline
+FE\_ADDR\_W & P & 1 & 24 & 64 & Front-end address width (log2): defines the total memory space accessible via the cache, which must be a power of two. \\ \hline
+\rowcolor{iob-blue}
+FE\_DATA\_W & P & 32 & 32 & 64 & Front-end data width (log2): this parameter allows supporting processing elements with various data widths. \\ \hline
+BE\_ADDR\_W & P & 1 & 24 &  & Back-end address width (log2): the value of this parameter must be equal or greater than FE\_ADDR\_W to match the width of the back-end interface, but the address space is still dictated by ADDR\_W. \\ \hline
+\rowcolor{iob-blue}
+BE\_DATA\_W & P & 32 & 32 & 256 & Back-end data width (log2): the value of this parameter must be an integer  multiple \$k \\geq 1\$ of DATA\_W. If \$k\textgreater 1\$, the memory controller can operate at a frequency higher than the cache's frequency. Typically, the memory controller has an asynchronous FIFO interface, so that it can sequentially process multiple commands received in paralell from the cache's back-end interface.  \\ \hline
+NWAYS\_W & P & 0 & 1 & 8 & Number of cache ways (log2): the miminum is 0 for a directly mapped cache; the default is 1 for a two-way cache; the maximum is limited by the desired maximum operating frequency, which degrades with the number of ways.  \\ \hline
+\rowcolor{iob-blue}
+NLINES\_W & P &  & 7 &  & Line offset width (log2): the value of this parameter equals the number of cache lines, given by 2**NLINES\_W. \\ \hline
+WORD\_OFFSET\_W & P & 1 & 3 &  & Word offset width (log2):  the value of this parameter equals the number of words per line, which is 2**OFFSET\_W.  \\ \hline
+\rowcolor{iob-blue}
+WTBUF\_DEPTH\_W & P &  & 4 &  & Write-through buffer depth (log2). A shallow buffer will fill up more frequently and cause write stalls; however, on a Read After Write (RAW) event, a shallow buffer will empty faster, decreasing the duration of the read stall. A deep buffer is unlkely to get full and cause write stalls; on the other hand, on a RAW event, it will take a long time to empty and cause long read stalls. \\ \hline
+REP\_POLICY & P & 0 & 0 & 3 & Line replacement policy: set to 0 for Least Recently Used (LRU); set to 1 for Pseudo LRU based on Most Recently Used (PLRU\_MRU); set to 2 for tree-based Pseudo LRU (PLRU\_TREE). \\ \hline
+\rowcolor{iob-blue}
+WRITE\_POL & P & 0 & 0  & 1 & Write policy: set to 0 for write-through or set to 1 for write-back. \\ \hline
+USE\_CTRL & P & 0 & 0 & 1 & Instantiates a cache controller (1) or not (0). The cache controller provides memory-mapped software accessible registers to invalidate the cache data contents, and monitor the write through buffer status using the front-end interface. To access the cache controller, the MSB of the address mut be set to 1. For more information refer to the example software functions provided. \\ \hline
+\rowcolor{iob-blue}
+USE\_CTRL\_CNT & P & 0 & 0 & 1 & Instantiates hit/miss counters for reads, writes or both (1), or not (0). This parameter is meaningful if the cache controller is present (USE\_CTRL: 1), providing additional software accessible functions for these functions. \\ \hline

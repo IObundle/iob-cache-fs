@@ -1,0 +1,26 @@
+/*
+ * SPDX-FileCopyrightText: 2025 IObundle, Lda
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+ */
+
+#ifndef H_IOB_CACHE_BACK_END_IOB_CONF_H
+#define H_IOB_CACHE_BACK_END_IOB_CONF_H
+
+#define IOB_CACHE_BACK_END_IOB_FE_ADDR_W 24
+#define IOB_CACHE_BACK_END_IOB_FE_DATA_W 32
+#define IOB_CACHE_BACK_END_IOB_BE_ADDR_W 24
+#define IOB_CACHE_BACK_END_IOB_BE_DATA_W 32
+#define IOB_CACHE_BACK_END_IOB_WORD_OFFSET_W 3
+#define IOB_CACHE_BACK_END_IOB_WRITE_POL 0
+#define IOB_CACHE_BACK_END_IOB_FE_NBYTES FE_DATA_W / 8
+#define IOB_CACHE_BACK_END_IOB_FE_NBYTES_W $clog2(FE_NBYTES)
+#define IOB_CACHE_BACK_END_IOB_BE_NBYTES BE_DATA_W / 8
+#define IOB_CACHE_BACK_END_IOB_BE_NBYTES_W $clog2(BE_NBYTES)
+#define IOB_CACHE_BACK_END_IOB_LINE2BE_W                                       \
+  WORD_OFFSET_W - $clog2(BE_DATA_W / FE_DATA_W)
+#define IOB_CACHE_BACK_END_IOB_VERSION 0x0081
+
+#endif // H_IOB_CACHE_BACK_END_IOB_CONF_H

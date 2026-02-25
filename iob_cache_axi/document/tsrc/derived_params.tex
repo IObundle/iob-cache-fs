@@ -1,0 +1,15 @@
+% SPDX-FileCopyrightText: 2025 IObundle, Lda
+%
+% SPDX-License-Identifier: MIT
+%
+% Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+
+\begin{description}
+  \item[FE\_NBYTES] Default description Value: FE\_DATA\_W / 8.
+  \item[FE\_NBYTES\_W] Default description Value: log2(FE\_NBYTES).
+  \item[BE\_NBYTES] Default description Value: BE\_DATA\_W / 8.
+  \item[BE\_NBYTES\_W] Default description Value: log2(BE\_NBYTES).
+  \item[LINE2BE\_W] Default description Value: WORD\_OFFSET\_W - log2(BE\_DATA\_W / FE\_DATA\_W).
+  \item[ADDR\_W] Width of the (word aligned) front-end address bus, optionally including the highest bit to access cache controller CSRs (if enabled) Value: USE\_CTRL + FE\_ADDR\_W.
+  \item[DATA\_W] Default description Value: FE\_DATA\_W.
+\end{description}

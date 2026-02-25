@@ -1,0 +1,58 @@
+% SPDX-FileCopyrightText: 2025 IObundle, Lda
+%
+% SPDX-License-Identifier: MIT
+%
+% Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+
+axi\_araddr\_o & output & AXI\_ADDR\_W & AXI address read channel byte address. \\ \hline
+\rowcolor{iob-blue}
+axi\_arvalid\_o & output & 1 & AXI address read channel valid. \\ \hline
+axi\_arready\_i & input & 1 & AXI address read channel ready. \\ \hline
+\rowcolor{iob-blue}
+axi\_rdata\_i & input & AXI\_DATA\_W & AXI read channel data. \\ \hline
+axi\_rresp\_i & input & 2 & AXI read channel response. \\ \hline
+\rowcolor{iob-blue}
+axi\_rvalid\_i & input & 1 & AXI read channel valid. \\ \hline
+axi\_rready\_o & output & 1 & AXI read channel ready. \\ \hline
+\rowcolor{iob-blue}
+axi\_arid\_o & output & AXI\_ID\_W & AXI address read channel ID. \\ \hline
+axi\_arlen\_o & output & AXI\_LEN\_W & AXI address read channel burst length. \\ \hline
+\rowcolor{iob-blue}
+axi\_arsize\_o & output & 3 & AXI address read channel burst size. \\ \hline
+axi\_arburst\_o & output & 2 & AXI address read channel burst type. \\ \hline
+\rowcolor{iob-blue}
+axi\_arlock\_o & output & 1 & AXI address read channel lock type. \\ \hline
+axi\_arcache\_o & output & 4 & AXI address read channel memory type. \\ \hline
+\rowcolor{iob-blue}
+axi\_arqos\_o & output & 4 & AXI address read channel quality of service. \\ \hline
+axi\_rid\_i & input & AXI\_ID\_W & AXI Read channel ID. \\ \hline
+\rowcolor{iob-blue}
+axi\_rlast\_i & input & 1 & AXI Read channel last word. \\ \hline
+axi\_awaddr\_o & output & AXI\_ADDR\_W & AXI address write channel byte address. \\ \hline
+\rowcolor{iob-blue}
+axi\_awvalid\_o & output & 1 & AXI address write channel valid. \\ \hline
+axi\_awready\_i & input & 1 & AXI address write channel ready. \\ \hline
+\rowcolor{iob-blue}
+axi\_wdata\_o & output & AXI\_DATA\_W & AXI write channel data. \\ \hline
+axi\_wstrb\_o & output & AXI\_DATA\_W/8 & AXI write channel write strobe. \\ \hline
+\rowcolor{iob-blue}
+axi\_wvalid\_o & output & 1 & AXI write channel valid. \\ \hline
+axi\_wready\_i & input & 1 & AXI write channel ready. \\ \hline
+\rowcolor{iob-blue}
+axi\_bresp\_i & input & 2 & AXI write response channel response. \\ \hline
+axi\_bvalid\_i & input & 1 & AXI write response channel valid. \\ \hline
+\rowcolor{iob-blue}
+axi\_bready\_o & output & 1 & AXI write response channel ready. \\ \hline
+axi\_awid\_o & output & AXI\_ID\_W & AXI address write channel ID. \\ \hline
+\rowcolor{iob-blue}
+axi\_awlen\_o & output & AXI\_LEN\_W & AXI address write channel burst length. \\ \hline
+axi\_awsize\_o & output & 3 & AXI address write channel burst size. \\ \hline
+\rowcolor{iob-blue}
+axi\_awburst\_o & output & 2 & AXI address write channel burst type. \\ \hline
+axi\_awlock\_o & output & 1 & AXI address write channel lock type. \\ \hline
+\rowcolor{iob-blue}
+axi\_awcache\_o & output & 4 & AXI address write channel memory type. \\ \hline
+axi\_awqos\_o & output & 4 & AXI address write channel quality of service. \\ \hline
+\rowcolor{iob-blue}
+axi\_wlast\_o & output & 1 & AXI Write channel last word flag. \\ \hline
+axi\_bid\_i & input & AXI\_ID\_W & AXI Write response channel ID. \\ \hline

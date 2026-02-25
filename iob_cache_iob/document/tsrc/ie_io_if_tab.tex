@@ -1,0 +1,12 @@
+% SPDX-FileCopyrightText: 2025 IObundle, Lda
+%
+% SPDX-License-Identifier: MIT
+%
+% Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+
+invalidate\_i & input & 1 & Invalidates all cache lines instantaneously if high. \\ \hline
+\rowcolor{iob-blue}
+invalidate\_o & output & 1 & This output is asserted high when the cache is invalidated via the cache controller or the direct \{\\tt invalidate\_in\} signal. The present \{\\tt invalidate\_out\} signal is useful for invalidating the next-level cache if there is one. If not, this output should be floated. \\ \hline
+wtb\_empty\_i & input & 1 & This input is driven by the next-level cache, if there is one, when its write-through buffer is empty. It should be tied high if there is no next-level cache. This signal is used to compute the overall empty status of a cache hierarchy, as explained for signal \{\\tt wtb\_empty\_out\}. \\ \hline
+\rowcolor{iob-blue}
+wtb\_empty\_o & output & 1 & This output is high if the cache's write-through buffer is empty and its \{	t wtb\_empty\_in\} signal is high. This signal informs that all data written to the cache has been written to the destination memory module, and all caches on the way are empty. \\ \hline

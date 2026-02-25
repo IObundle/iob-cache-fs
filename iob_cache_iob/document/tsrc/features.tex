@@ -1,0 +1,17 @@
+% SPDX-FileCopyrightText: 2024 IObundle
+%
+% SPDX-License-Identifier: MIT
+
+\begin{itemize}
+  \itemsep-0.5em
+\item Pipelined operation allowing consecutive one-cycle reads and writes
+\item IObundle's Native Pipelined Interface (NPI) front-end native interface on the processor side (front-end)
+\item NPI or AXI4 interface on the memory side (back-end)
+\item Configurable address and data widths on the front-end and back-end interfaces for supporting a variety of different systems
+\item Configurable number of lines and words per line
+\item Configurable K-Way Set-Associativity ($k \geq 1$)
+\item Configurable line replacement policy: LRU, MRU-based PLRU, and tree-based PLRU.
+\item Configurable Write-Through Not-Allocate and Write-Back Allocate policies
+\item Configurable Write-Through buffer depth
+\item Optional control address space for cache invalidation, accessing the write through buffer status and read/write hit/miss counters
+\end{itemize}
