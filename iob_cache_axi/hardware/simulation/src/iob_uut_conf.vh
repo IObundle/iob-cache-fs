@@ -17,8 +17,8 @@
 `define IOB_UUT_AXI_LEN_W 4
 `define IOB_UUT_AXI_ADDR_W BE_ADDR_W
 `define IOB_UUT_AXI_DATA_W BE_DATA_W
-// Core Constants. DO NOT CHANGE
-`define IOB_UUT_VERSION 16'h0081
+// Core Configuration Macros.
+`define IOB_UUT_VERSION 24'h008100
 // Core Derived Parameters. DO NOT CHANGE
 `define IOB_UUT_FE_NBYTES FE_DATA_W / 8
 `define IOB_UUT_FE_NBYTES_W $clog2(FE_NBYTES)

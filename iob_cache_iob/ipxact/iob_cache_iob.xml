@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-SPDX-FileCopyrightText: 2025 IObundle, Lda
+SPDX-FileCopyrightText: 2026 IObundle, Lda
 
 SPDX-License-Identifier: MIT
 
-Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
 -->
 
 <ipxact:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ipxact="http://www.accellera.org/XMLSchema/IPXACT/1685-2014" xmlns:kactus2="http://kactus2.cs.tut.fi" xsi:schemaLocation="http://www.accellera.org/XMLSchema/IPXACT/1685-2014 http://www.accellera.org/XMLSchema/IPXACT/1685-2014/index.xsd">
 	<ipxact:vendor>IObundle</ipxact:vendor>
 	<ipxact:library>IP</ipxact:library>
 	<ipxact:name>IOB-CACHE-IOB</ipxact:name>
-	<ipxact:version>0.71</ipxact:version>
+	<ipxact:version>0.7.1</ipxact:version>
 	<ipxact:busInterfaces>
 		<ipxact:busInterface>
 			<ipxact:name>clk_en_rst_s</ipxact:name>
@@ -38,7 +38,7 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 		<ipxact:busInterface>
 			<ipxact:name>iob_s</ipxact:name>
 			<ipxact:displayName>IOb</ipxact:displayName>
-			<ipxact:description>Front-end interface</ipxact:description>
+			<ipxact:description>Front-end interface, when selecting the IOb FE interface.</ipxact:description>
 			<ipxact:busType vendor="IObundle" library="IOb" name="iob" version="1.0"/>
 			<ipxact:slave/>
 			<ipxact:connectionRequired>true</ipxact:connectionRequired>
@@ -75,7 +75,7 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 		<ipxact:busInterface>
 			<ipxact:name>iob_m</ipxact:name>
 			<ipxact:displayName>IOb</ipxact:displayName>
-			<ipxact:description>Back-end interface</ipxact:description>
+			<ipxact:description>Back-end interface, when selecting the IOb BE interface.</ipxact:description>
 			<ipxact:busType vendor="IObundle" library="IOb" name="iob" version="1.0"/>
 			<ipxact:master/>
 			<ipxact:connectionRequired>true</ipxact:connectionRequired>
@@ -118,7 +118,7 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 			<ipxact:addressBlock>
 				<ipxact:name>CSR_REGS</ipxact:name>
 				<ipxact:baseAddress>0</ipxact:baseAddress>
-				<ipxact:range>32</ipxact:range>
+				<ipxact:range>36</ipxact:range>
 				<ipxact:width>32</ipxact:width>
 				<ipxact:usage>register</ipxact:usage>
 				<ipxact:access>read-write</ipxact:access>
@@ -410,9 +410,9 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 				</ipxact:register>
 				<ipxact:register>
 					<ipxact:name>version</ipxact:name>
-					<ipxact:description>Product version. This 16-bit register uses nibbles to represent decimal numbers using their binary values. The two most significant nibbles represent the integral part of the version, and the two least significant nibbles represent the decimal part. For example V12.34 is represented by 0x1234.</ipxact:description>
-					<ipxact:addressOffset>"16'h001E</ipxact:addressOffset>
-					<ipxact:size>16</ipxact:size>
+					<ipxact:description>Product version in SemVer format. This 24-bit register uses nibbles to represent decimal numbers using their binary values. The two most significant nibbles represent the major part of the version, followed by two nibbles that represent the minor part. The two least significant nibbles represent the patch version. For example V12.34.56 is represented by 0x123456.</ipxact:description>
+					<ipxact:addressOffset>"16'h0020</ipxact:addressOffset>
+					<ipxact:size>32</ipxact:size>
 					<ipxact:volatile>false</ipxact:volatile>
 					<ipxact:access>read-only</ipxact:access>
 					<ipxact:field>
@@ -420,10 +420,10 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 						<ipxact:bitOffset>0</ipxact:bitOffset>
 						<ipxact:resets>
 							<ipxact:reset resetTypeRef="arst_i">
-								<ipxact:value>0071</ipxact:value>
+								<ipxact:value>000701</ipxact:value>
 							</ipxact:reset>
 						</ipxact:resets>
-						<ipxact:bitWidth>16</ipxact:bitWidth>
+						<ipxact:bitWidth>24</ipxact:bitWidth>
 						<ipxact:volatile>false</ipxact:volatile>
 						<ipxact:access>read-only</ipxact:access>
 						<ipxact:modifiedWriteValue></ipxact:modifiedWriteValue>
@@ -735,7 +735,7 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 			</ipxact:port>
 			<ipxact:port>
 				<ipxact:name>invalidate_o</ipxact:name>
-				<ipxact:description>This output is asserted high when the cache is invalidated via the cache controller or the direct {\tt invalidate_in} signal. The present {\tt invalidate_out} signal is useful for invalidating the next-level cache if there is one. If not, this output should be floated.</ipxact:description>
+				<ipxact:description>This output is asserted high when the cache is invalidated via the cache controller or the direct 'invalidate_in' signal. The present 'invalidate_out' signal is useful for invalidating the next-level cache if there is one. If not, this output should be floated.</ipxact:description>
 				<ipxact:wire>
 					<ipxact:direction>out</ipxact:direction>
 					<ipxact:vectors>
@@ -751,7 +751,7 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 			</ipxact:port>
 			<ipxact:port>
 				<ipxact:name>wtb_empty_i</ipxact:name>
-				<ipxact:description>This input is driven by the next-level cache, if there is one, when its write-through buffer is empty. It should be tied high if there is no next-level cache. This signal is used to compute the overall empty status of a cache hierarchy, as explained for signal {\tt wtb_empty_out}.</ipxact:description>
+				<ipxact:description>This input is driven by the next-level cache, if there is one, when its write-through buffer is empty. It should be tied high if there is no next-level cache. This signal is used to compute the overall empty status of a cache hierarchy, as explained for signal 'wtb_empty_out'.</ipxact:description>
 				<ipxact:wire>
 					<ipxact:direction>in</ipxact:direction>
 					<ipxact:vectors>
@@ -767,7 +767,7 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 			</ipxact:port>
 			<ipxact:port>
 				<ipxact:name>wtb_empty_o</ipxact:name>
-				<ipxact:description>This output is high if the cache's write-through buffer is empty and its {	t wtb_empty_in} signal is high. This signal informs that all data written to the cache has been written to the destination memory module, and all caches on the way are empty.</ipxact:description>
+				<ipxact:description>This output is high if the cache's write-through buffer is empty and its 'wtb_empty_in' signal is high. This signal informs that all data written to the cache has been written to the destination memory module, and all caches on the way are empty.</ipxact:description>
 				<ipxact:wire>
 					<ipxact:direction>out</ipxact:direction>
 					<ipxact:vectors>
@@ -902,7 +902,7 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 			<ipxact:description>Asynchronous active-high reset</ipxact:description>
 		</ipxact:resetType>
 	</ipxact:resetTypes>
-	<ipxact:description>Default description</ipxact:description>
+	<ipxact:description>IOb-cache is a high-performance, configurable open-source Verilog cache. The original sources for this core and public key signature are available at: https://github.com/IObundle/iob-cache.</ipxact:description>
 	<ipxact:parameters>
 		<ipxact:parameter kactus2:usageCount="1" maximum="?" minimum="?" parameterId="LRU_ID" type="int">
 			<ipxact:name>LRU</ipxact:name>
@@ -951,7 +951,7 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 		</ipxact:parameter>
 		<ipxact:parameter kactus2:usageCount="4" maximum="256" minimum="32" parameterId="BE_DATA_W_ID" type="int">
 			<ipxact:name>BE_DATA_W</ipxact:name>
-			<ipxact:description>Back-end data width (log2): the value of this parameter must be an integer  multiple $k \geq 1$ of DATA_W. If $k>1$, the memory controller can operate at a frequency higher than the cache's frequency. Typically, the memory controller has an asynchronous FIFO interface, so that it can sequentially process multiple commands received in paralell from the cache's back-end interface. </ipxact:description>
+			<ipxact:description>Back-end data width (log2): the value of this parameter must be an integer  multiple $k>=1$ of DATA_W. If $k>1$, the memory controller can operate at a frequency higher than the cache's frequency. Typically, the memory controller has an asynchronous FIFO interface, so that it can sequentially process multiple commands received in paralell from the cache's back-end interface. </ipxact:description>
 			<ipxact:value>32</ipxact:value>
 		</ipxact:parameter>
 		<ipxact:parameter kactus2:usageCount="1" maximum="8" minimum="0" parameterId="NWAYS_W_ID" type="int">
@@ -1022,7 +1022,7 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 		<ipxact:parameter kactus2:usageCount="2" parameterId="ADDR_W_ID" type="int">
 			<ipxact:name>ADDR_W</ipxact:name>
 			<ipxact:description>Width of the (word aligned) front-end address bus, optionally including the highest bit to access cache controller CSRs (if enabled)</ipxact:description>
-			<ipxact:value>5</ipxact:value>
+			<ipxact:value>6</ipxact:value>
 		</ipxact:parameter>
 		<ipxact:parameter kactus2:usageCount="4" parameterId="DATA_W_ID" type="string">
 			<ipxact:name>DATA_W</ipxact:name>
@@ -1031,8 +1031,8 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 		</ipxact:parameter>
 		<ipxact:parameter kactus2:usageCount="1" parameterId="VERSION_ID" type="string">
 			<ipxact:name>VERSION</ipxact:name>
-			<ipxact:description>Product version. This 16-bit macro uses nibbles to represent decimal numbers using their binary values. The two most significant nibbles represent the integral part of the version, and the two least significant nibbles represent the decimal part.</ipxact:description>
-			<ipxact:value>16'h0071</ipxact:value>
+			<ipxact:description>Product version in SemVer format. This 24-bit macro uses nibbles to represent decimal numbers using their binary values. The two most significant nibbles represent the major part of the version, followed by two nibbles that represent the minor part. The two least significant nibbles represent the patch version. For example V12.34.56 is represented by 0x123456.</ipxact:description>
+			<ipxact:value>24'h000701</ipxact:value>
 		</ipxact:parameter>
 	</ipxact:parameters>
 	<ipxact:vendorExtensions>
@@ -1043,6 +1043,6 @@ Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hws
 			<kactus2:kts_implementation>HW</kactus2:kts_implementation>
 			<kactus2:kts_firmness>Mutable</kactus2:kts_firmness>
 		</kactus2:kts_attributes>
-		<kactus2:license>MIT License, Copyright (c) 2025</kactus2:license>
+		<kactus2:license>MIT License, Copyright (c) 2026</kactus2:license>
 	</ipxact:vendorExtensions>
 </ipxact:component>

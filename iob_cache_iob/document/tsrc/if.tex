@@ -1,55 +1,119 @@
-% SPDX-FileCopyrightText: 2025 IObundle, Lda
+% SPDX-FileCopyrightText: 2026 IObundle, Lda
 %
 % SPDX-License-Identifier: MIT
 %
-% Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+% Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
 
 The interface signals of the core are described in the following tables.
 Note that the ouput signals are registered in the core, while the input signals are not.
+{
+\setlength{\LTcapwidth}{\linewidth} % make sure the caption takes up the whole linewidth
 \begin{xltabular}{\textwidth}{|l|l|r|X|}
-
   \hline
   \rowcolor{iob-green}
   {\bf Name} & {\bf Direction} & {\bf Width} & {\bf Description}  \\ \hline \hline
+  \endfirsthead
+  \hline
+  \caption{Clock, clock enable and reset}
+  \endlastfoot
 
   \input clk_en_rst_s_if_tab
-
-  \caption{Clock, clock enable and reset}
 \end{xltabular}
 \label{clk_en_rst_s_if_tab:is}
+}
 
+{
+\setlength{\LTcapwidth}{\linewidth} % make sure the caption takes up the whole linewidth
 \begin{xltabular}{\textwidth}{|l|l|r|X|}
-
   \hline
   \rowcolor{iob-green}
   {\bf Name} & {\bf Direction} & {\bf Width} & {\bf Description}  \\ \hline \hline
+  \endfirsthead
+  \hline
+  \caption{Front-end interface, when selecting the IOb FE interface.}
+  \endlastfoot
 
   \input iob_s_if_tab
-
-  \caption{Front-end interface}
 \end{xltabular}
 \label{iob_s_if_tab:is}
+}
 
+{
+\setlength{\LTcapwidth}{\linewidth} % make sure the caption takes up the whole linewidth
 \begin{xltabular}{\textwidth}{|l|l|r|X|}
-
   \hline
   \rowcolor{iob-green}
   {\bf Name} & {\bf Direction} & {\bf Width} & {\bf Description}  \\ \hline \hline
+  \endfirsthead
+  \hline
+  \caption{Front-end interface, when selecting the Wishbone FE interface.}
+  \endlastfoot
+
+  \input wb_s_if_tab
+\end{xltabular}
+\label{wb_s_if_tab:is}
+}
+
+{
+\setlength{\LTcapwidth}{\linewidth} % make sure the caption takes up the whole linewidth
+\begin{xltabular}{\textwidth}{|l|l|r|X|}
+  \hline
+  \rowcolor{iob-green}
+  {\bf Name} & {\bf Direction} & {\bf Width} & {\bf Description}  \\ \hline \hline
+  \endfirsthead
+  \hline
+  \caption{Front-end interface, when selecting the AXI-Lite FE interface.}
+  \endlastfoot
+
+  \input axil_s_if_tab
+\end{xltabular}
+\label{axil_s_if_tab:is}
+}
+
+{
+\setlength{\LTcapwidth}{\linewidth} % make sure the caption takes up the whole linewidth
+\begin{xltabular}{\textwidth}{|l|l|r|X|}
+  \hline
+  \rowcolor{iob-green}
+  {\bf Name} & {\bf Direction} & {\bf Width} & {\bf Description}  \\ \hline \hline
+  \endfirsthead
+  \hline
+  \caption{Cache invalidate and write-trough buffer IO chain}
+  \endlastfoot
 
   \input ie_io_if_tab
-
-  \caption{Cache invalidate and write-trough buffer IO chain}
 \end{xltabular}
 \label{ie_io_if_tab:is}
+}
 
+{
+\setlength{\LTcapwidth}{\linewidth} % make sure the caption takes up the whole linewidth
 \begin{xltabular}{\textwidth}{|l|l|r|X|}
-
   \hline
   \rowcolor{iob-green}
   {\bf Name} & {\bf Direction} & {\bf Width} & {\bf Description}  \\ \hline \hline
+  \endfirsthead
+  \hline
+  \caption{Back-end interface, when selecting the AXI4 BE interface.}
+  \endlastfoot
+
+  \input axi_m_if_tab
+\end{xltabular}
+\label{axi_m_if_tab:is}
+}
+
+{
+\setlength{\LTcapwidth}{\linewidth} % make sure the caption takes up the whole linewidth
+\begin{xltabular}{\textwidth}{|l|l|r|X|}
+  \hline
+  \rowcolor{iob-green}
+  {\bf Name} & {\bf Direction} & {\bf Width} & {\bf Description}  \\ \hline \hline
+  \endfirsthead
+  \hline
+  \caption{Back-end interface, when selecting the IOb BE interface.}
+  \endlastfoot
 
   \input iob_m_if_tab
-
-  \caption{Back-end interface}
 \end{xltabular}
 \label{iob_m_if_tab:is}
+}

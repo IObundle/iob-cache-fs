@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: 2025 IObundle, Lda
+ * SPDX-FileCopyrightText: 2026 IObundle, Lda
  *
  * SPDX-License-Identifier: MIT
  *
- * Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+ * Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
  */
 
 #ifndef H_IOB_CACHE_IOB_CONF_H
@@ -34,6 +34,6 @@
 #define IOB_CACHE_IOB_LINE2BE_W WORD_OFFSET_W - $clog2(BE_DATA_W / FE_DATA_W)
 #define IOB_CACHE_IOB_ADDR_W USE_CTRL + FE_ADDR_W
 #define IOB_CACHE_IOB_DATA_W FE_DATA_W
-#define IOB_CACHE_IOB_VERSION 0x0071
+#define IOB_CACHE_IOB_VERSION 0x000701
 
 #endif // H_IOB_CACHE_IOB_CONF_H

@@ -1,8 +1,8 @@
-// SPDX-FileCopyrightText: 2025 IObundle, Lda
+// SPDX-FileCopyrightText: 2026 IObundle, Lda
 //
 // SPDX-License-Identifier: MIT
 //
-// Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+// Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
 
 `timescale 1ns / 1ps
 `include "iob_cache_iob_csrs_conf.vh"
@@ -34,7 +34,7 @@ module iob_cache_iob_csrs #(
    input                              arst_i,
    // control_if_s: CSR control interface. Interface type defined by `csr_if` parameter.
    input                              iob_valid_i,
-   input  [                    5-1:0] iob_addr_i,
+   input  [                    6-1:0] iob_addr_i,
    input  [               DATA_W-1:0] iob_wdata_i,
    input  [             DATA_W/8-1:0] iob_wstrb_i,
    output                             iob_rvalid_o,
@@ -277,11 +277,11 @@ module iob_cache_iob_csrs #(
 
 
    //NAME: version;
-   //MODE: R; WIDTH: 16; RST_VAL: 0071; ADDR: 30; SPACE (bytes): 2 (max); TYPE: REG. 
+   //MODE: R; WIDTH: 24; RST_VAL: 000701; ADDR: 32; SPACE (bytes): 4 (max); TYPE: REG. 
 
    wire version_addressed_r;
-   assign version_addressed_r = (internal_iob_addr_stable>>shift_amount >= (30>>shift_amount)) && (internal_iob_addr_stable>>shift_amount <= iob_max(
-       1, 31 >> shift_amount
+   assign version_addressed_r = (internal_iob_addr_stable>>shift_amount >= (32>>shift_amount)) && (internal_iob_addr_stable>>shift_amount <= iob_max(
+       1, 35 >> shift_amount
    ));
 
 
@@ -402,7 +402,7 @@ module iob_cache_iob_csrs #(
       end
 
       if (version_addressed_r) begin
-         iob_rdata_nxt[16+:16] = 16'h0071 | 16'd0;
+         iob_rdata_nxt[0+:32] = 32'h000701 | 32'd0;
       end
 
       if (write_en && (wstrb_addr >= (28)) && (wstrb_addr < 29)) begin

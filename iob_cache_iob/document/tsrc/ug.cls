@@ -35,6 +35,7 @@
 \RequirePackage{lscape}
 \RequirePackage{longtable}
 \RequirePackage{xltabular}
+\RequirePackage{hhline}
 
 \ifdefined\DOXYGEN
 %% moved from doxygen.sty due to workaround for LaTex 2019 version and unmaintained tabu package
@@ -73,7 +74,14 @@
 \renewcommand{\footrulewidth}{.4pt}
 
 \fancyfoot{}
-\fancyfoot[LO,RE]{\copyright \the\year{} IObundle Lda. All rights reserved\hspace{1cm}\url{www.iobundle.com}\hspace{1cm}{\bf Confidential}}
+\fancyfoot[LO,RE]{%
+  \copyright \the\year{} IObundle Lda. All rights reserved%
+  \hspace{1cm}\url{www.iobundle.com}%
+  \hspace{1cm}%
+  \ifdefined\CONFIDENTIAL
+    \textbf{Confidential}%
+  \fi
+}
 \fancyfoot[LE,RO]{\thepage}
 
 \newcommand{\category}[1]{\def\@category{#1}}
@@ -87,3 +95,11 @@
 
 \graphicspath{ {./figures/} }
 
+% Custom alternative to \hline that prevents latex from breaking table rows into new pages
+\makeatletter
+\def\nobreakhline{%
+  \multispan\LT@cols
+  \unskip\leaders\hrule\@height\arrayrulewidth\hfill\cr
+  \noalign{\penalty10000}%
+}
+\makeatother

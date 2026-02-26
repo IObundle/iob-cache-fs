@@ -12,8 +12,8 @@
 `define IOB_UUT_WRITE_POL 0 
 `define IOB_UUT_USE_CTRL 1
 `define IOB_UUT_USE_CTRL_CNT 1
-// Core Constants. DO NOT CHANGE
-`define IOB_UUT_VERSION 16'h0081
+// Core Configuration Macros.
+`define IOB_UUT_VERSION 24'h008100
 // Core Derived Parameters. DO NOT CHANGE
 `define IOB_UUT_FE_NBYTES FE_DATA_W / 8
 `define IOB_UUT_FE_NBYTES_W $clog2(FE_NBYTES)

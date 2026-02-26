@@ -2,5 +2,5 @@
 // Core Configuration Parameters Default Values
 `define IOB_CACHE_CONTROL_DATA_W 32
 `define IOB_CACHE_CONTROL_USE_CTRL_CNT 1
-// Core Constants. DO NOT CHANGE
-`define IOB_CACHE_CONTROL_VERSION 16'h0081
+// Core Configuration Macros.
+`define IOB_CACHE_CONTROL_VERSION 24'h008100

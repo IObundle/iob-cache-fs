@@ -1,0 +1,18 @@
+% SPDX-FileCopyrightText: 2026 IObundle, Lda
+%
+% SPDX-License-Identifier: MIT
+%
+% Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
+
+wb\_dat\_o & output & DATA\_W & Data input. \\* \nobreakhline
+\rowcolor{iob-blue}
+wb\_datout\_i & input & DATA\_W & Data output. \\* \nobreakhline
+wb\_ack\_o & output & 1 & Acknowledge input. Indicates normal termination of a bus cycle. \\* \nobreakhline
+\rowcolor{iob-blue}
+wb\_adr\_i & input & ADDR\_W & Address output. Passes binary address. \\ \hline
+wb\_cyc\_i & input & 1 & Cycle output. Indicates a valid bus cycle. \\ \hline
+\rowcolor{iob-blue}
+wb\_sel\_i & input & DATA\_W/8 & Select output. Indicates where valid data is expected on the data bus. \\ \hline
+wb\_stb\_i & input & 1 & Strobe output. Indicates valid access. \\ \hline
+\rowcolor{iob-blue}
+wb\_we\_i & input & 1 & Write enable. Indicates write access. \\

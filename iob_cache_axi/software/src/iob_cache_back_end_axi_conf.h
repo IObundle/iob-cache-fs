@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: 2025 IObundle, Lda
+ * SPDX-FileCopyrightText: 2026 IObundle, Lda
  *
  * SPDX-License-Identifier: MIT
  *
- * Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+ * Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
  */
 
 #ifndef H_IOB_CACHE_BACK_END_AXI_CONF_H
@@ -26,6 +26,6 @@
 #define IOB_CACHE_BACK_END_AXI_BE_NBYTES_W $clog2(BE_NBYTES)
 #define IOB_CACHE_BACK_END_AXI_LINE2BE_W                                       \
   WORD_OFFSET_W - $clog2(BE_DATA_W / FE_DATA_W)
-#define IOB_CACHE_BACK_END_AXI_VERSION 0x0081
+#define IOB_CACHE_BACK_END_AXI_VERSION 0x008100
 
 #endif // H_IOB_CACHE_BACK_END_AXI_CONF_H

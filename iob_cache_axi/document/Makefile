@@ -18,6 +18,8 @@ endif
 #default DOC
 DOC?=ug
 
+CONFIDENTIAL?=1
+
 TSRC = $(patsubst tsrc/%, ./%, $(wildcard tsrc/*))
 %.tex: tsrc/%.tex
 	cp $< $@
@@ -98,6 +100,8 @@ ugtop.tex:
 	if [ $(ASICSYNTH) == 1 ]; then echo "\def\ASICSYNTH{Y}" >> $@; fi
 	if [ $(FPGACOMP) == 1 ]; then echo "\def\FPGACOMP{Y}" >> $@; fi
 	if [ $(DOXYGEN) == 1 ]; then echo "\def\DOXYGEN{Y}" >> $@; fi
+	if ls linux.tex > /dev/null 2>&1; then echo "\def\LINUX{Y}" >> $@; fi
+	if [ $(CONFIDENTIAL) == 1 ]; then echo "\def\CONFIDENTIAL{Y}" >> $@; fi
 	make doctop DOC=ug
 
 #include implementation results if available

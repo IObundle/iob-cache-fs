@@ -3,5 +3,5 @@
 `define IOB_CTLS_W 21
 `define IOB_CTLS_MODE 0
 `define IOB_CTLS_SYMBOL 0
-// Core Constants. DO NOT CHANGE
-`define IOB_CTLS_VERSION 16'h0081
+// Core Configuration Macros.
+`define IOB_CTLS_VERSION 24'h008100

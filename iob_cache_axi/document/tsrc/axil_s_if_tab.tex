@@ -1,0 +1,31 @@
+% SPDX-FileCopyrightText: 2026 IObundle, Lda
+%
+% SPDX-License-Identifier: MIT
+%
+% Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
+
+axil\_araddr\_i & input & ADDR\_W & AXI-Lite address read channel byte address. \\* \nobreakhline
+\rowcolor{iob-blue}
+axil\_arvalid\_i & input & 1 & AXI-Lite address read channel valid. \\* \nobreakhline
+axil\_arready\_o & output & 1 & AXI-Lite address read channel ready. \\* \nobreakhline
+\rowcolor{iob-blue}
+axil\_rdata\_o & output & DATA\_W & AXI-Lite read channel data. \\ \hline
+axil\_rresp\_o & output & 2 & AXI-Lite read channel response. \\ \hline
+\rowcolor{iob-blue}
+axil\_rvalid\_o & output & 1 & AXI-Lite read channel valid. \\ \hline
+axil\_rready\_i & input & 1 & AXI-Lite read channel ready. \\ \hline
+\rowcolor{iob-blue}
+axil\_awaddr\_i & input & ADDR\_W & AXI-Lite address write channel byte address. \\ \hline
+axil\_awvalid\_i & input & 1 & AXI-Lite address write channel valid. \\ \hline
+\rowcolor{iob-blue}
+axil\_awready\_o & output & 1 & AXI-Lite address write channel ready. \\ \hline
+axil\_wdata\_i & input & DATA\_W & AXI-Lite write channel data. \\ \hline
+\rowcolor{iob-blue}
+axil\_wstrb\_i & input & DATA\_W/8 & AXI-Lite write channel write strobe. \\ \hline
+axil\_wvalid\_i & input & 1 & AXI-Lite write channel valid. \\ \hline
+\rowcolor{iob-blue}
+axil\_wready\_o & output & 1 & AXI-Lite write channel ready. \\ \hline
+axil\_bresp\_o & output & 2 & AXI-Lite write response channel response. \\ \hline
+\rowcolor{iob-blue}
+axil\_bvalid\_o & output & 1 & AXI-Lite write response channel valid. \\ \hline
+axil\_bready\_i & input & 1 & AXI-Lite write response channel ready. \\

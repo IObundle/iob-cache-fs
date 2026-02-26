@@ -1,22 +1,26 @@
-// SPDX-FileCopyrightText: 2025 IObundle, Lda
+// SPDX-FileCopyrightText: 2026 IObundle, Lda
 //
 // SPDX-License-Identifier: MIT
 //
-// Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+// Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
 
 `timescale 1ns / 1ps
 `include "iob_fifo_sync_conf.vh"
 
 module iob_fifo_sync #(
-   parameter W_DATA_W  = `IOB_FIFO_SYNC_W_DATA_W,
-   parameter R_DATA_W  = `IOB_FIFO_SYNC_R_DATA_W,
-   parameter ADDR_W    = `IOB_FIFO_SYNC_ADDR_W,
-   parameter MAXDATA_W = `IOB_FIFO_SYNC_MAXDATA_W,  // Don't change this parameter value!
-   parameter MINDATA_W = `IOB_FIFO_SYNC_MINDATA_W,  // Don't change this parameter value!
-   parameter R         = `IOB_FIFO_SYNC_R,          // Don't change this parameter value!
-   parameter MINADDR_W = `IOB_FIFO_SYNC_MINADDR_W,  // Don't change this parameter value!
-   parameter W_ADDR_W  = `IOB_FIFO_SYNC_W_ADDR_W,   // Don't change this parameter value!
-   parameter R_ADDR_W  = `IOB_FIFO_SYNC_R_ADDR_W    // Don't change this parameter value!
+   parameter W_DATA_W    = `IOB_FIFO_SYNC_W_DATA_W,
+   parameter R_DATA_W    = `IOB_FIFO_SYNC_R_DATA_W,
+   parameter ADDR_W      = `IOB_FIFO_SYNC_ADDR_W,
+   parameter MAXDATA_W   = `IOB_FIFO_SYNC_MAXDATA_W,    // Don't change this parameter value!
+   parameter MINDATA_W   = `IOB_FIFO_SYNC_MINDATA_W,    // Don't change this parameter value!
+   parameter R           = `IOB_FIFO_SYNC_R,            // Don't change this parameter value!
+   parameter MINADDR_W   = `IOB_FIFO_SYNC_MINADDR_W,    // Don't change this parameter value!
+   parameter W_ADDR_W    = `IOB_FIFO_SYNC_W_ADDR_W,     // Don't change this parameter value!
+   parameter R_ADDR_W    = `IOB_FIFO_SYNC_R_ADDR_W,     // Don't change this parameter value!
+   parameter ADDR_W_DIFF = `IOB_FIFO_SYNC_ADDR_W_DIFF,  // Don't change this parameter value!
+   parameter FIFO_SIZE   = `IOB_FIFO_SYNC_FIFO_SIZE,    // Don't change this parameter value!
+   parameter W_INCR      = `IOB_FIFO_SYNC_W_INCR,       // Don't change this parameter value!
+   parameter R_INCR      = `IOB_FIFO_SYNC_R_INCR        // Don't change this parameter value!
 ) (
    // clk_en_rst_s: Clock, clock enable and reset
    input                  clk_i,
@@ -135,15 +139,9 @@ module iob_fifo_sync #(
          else iob_sign = 1;
       end
    endfunction
-   localparam ADDR_W_DIFF = $clog2(R);
-   localparam [ADDR_W:0] FIFO_SIZE = {1'b1, {ADDR_W{1'b0}}};  //in bytes
-   assign w_en_int = (w_en_i & (~w_full_o));
-   assign r_en_int = (r_en_i & (~r_empty_o));
+   assign w_en_int      = (w_en_i & (~w_full_o));
+   assign r_en_int      = (r_en_i & (~r_empty_o));
    //assign according to assymetry type
-   localparam [ADDR_W-1:0] W_INCR = (W_DATA_W > R_DATA_W) ?
-                  {{ADDR_W-1{1'd0}},{1'd1}} << ADDR_W_DIFF : {{ADDR_W-1{1'd0}},{1'd1}};
-   localparam [ADDR_W-1:0] R_INCR = (R_DATA_W > W_DATA_W) ?
-                  {{ADDR_W-1{1'd0}},{1'd1}} << ADDR_W_DIFF : {{ADDR_W-1{1'd0}},{1'd1}};
    assign level_o       = level;
    assign r_empty_nxt   = level_nxt < {1'b0, R_INCR};
    assign w_full_nxt    = level_nxt > (FIFO_SIZE - W_INCR);

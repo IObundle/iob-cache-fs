@@ -6,7 +6,6 @@
 
 `include "iob_cache_control_conf.vh"
 `include "iob_cache_iob_csrs_conf.vh"
-`include "iob_cache_iob_csrs.vh"
 
 // Module responsible for performance measuring, information about the current
 // cache state, and other cache functions

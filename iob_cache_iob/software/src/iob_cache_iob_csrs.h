@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: 2025 IObundle, Lda
+ * SPDX-FileCopyrightText: 2026 IObundle, Lda
  *
  * SPDX-License-Identifier: MIT
  *
- * Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+ * Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
  */
 
 #ifndef H_IOB_CACHE_IOB_CSRS_CSRS_H
@@ -20,129 +20,7 @@
 
 #include <stdint.h>
 
-// used address space width
-/**
- * @def IOB_CACHE_IOB_CSRS_CSRS_ADDR_W
- * @brief Used core address space width.
- *
- * This macro defines the required address width in bits to access all core
- * CSRs.
- */
-#define IOB_CACHE_IOB_CSRS_CSRS_ADDR_W 5
-
-// Addresses
-/**
- * @def IOB_CACHE_IOB_CSRS_WTB_EMPTY_ADDR
- * @brief WTB_EMPTY CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_WTB_EMPTY_ADDR 0
-/**
- * @def IOB_CACHE_IOB_CSRS_WTB_FULL_ADDR
- * @brief WTB_FULL CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_WTB_FULL_ADDR 1
-/**
- * @def IOB_CACHE_IOB_CSRS_RW_HIT_ADDR
- * @brief RW_HIT CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_RW_HIT_ADDR 4
-/**
- * @def IOB_CACHE_IOB_CSRS_RW_MISS_ADDR
- * @brief RW_MISS CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_RW_MISS_ADDR 8
-/**
- * @def IOB_CACHE_IOB_CSRS_READ_HIT_ADDR
- * @brief READ_HIT CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_READ_HIT_ADDR 12
-/**
- * @def IOB_CACHE_IOB_CSRS_READ_MISS_ADDR
- * @brief READ_MISS CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_READ_MISS_ADDR 16
-/**
- * @def IOB_CACHE_IOB_CSRS_WRITE_HIT_ADDR
- * @brief WRITE_HIT CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_WRITE_HIT_ADDR 20
-/**
- * @def IOB_CACHE_IOB_CSRS_WRITE_MISS_ADDR
- * @brief WRITE_MISS CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_WRITE_MISS_ADDR 24
-/**
- * @def IOB_CACHE_IOB_CSRS_RST_CNTRS_ADDR
- * @brief RST_CNTRS CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_RST_CNTRS_ADDR 28
-/**
- * @def IOB_CACHE_IOB_CSRS_INVALIDATE_ADDR
- * @brief INVALIDATE CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_INVALIDATE_ADDR 29
-/**
- * @def IOB_CACHE_IOB_CSRS_VERSION_ADDR
- * @brief version CSR address.
- */
-#define IOB_CACHE_IOB_CSRS_VERSION_ADDR 30
-
-// Data widths (bit)
-/**
- * @def IOB_CACHE_IOB_CSRS_WTB_EMPTY_W
- * @brief WTB_EMPTY CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_WTB_EMPTY_W 8
-/**
- * @def IOB_CACHE_IOB_CSRS_WTB_FULL_W
- * @brief WTB_FULL CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_WTB_FULL_W 8
-/**
- * @def IOB_CACHE_IOB_CSRS_RW_HIT_W
- * @brief RW_HIT CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_RW_HIT_W 32
-/**
- * @def IOB_CACHE_IOB_CSRS_RW_MISS_W
- * @brief RW_MISS CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_RW_MISS_W 32
-/**
- * @def IOB_CACHE_IOB_CSRS_READ_HIT_W
- * @brief READ_HIT CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_READ_HIT_W 32
-/**
- * @def IOB_CACHE_IOB_CSRS_READ_MISS_W
- * @brief READ_MISS CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_READ_MISS_W 32
-/**
- * @def IOB_CACHE_IOB_CSRS_WRITE_HIT_W
- * @brief WRITE_HIT CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_WRITE_HIT_W 32
-/**
- * @def IOB_CACHE_IOB_CSRS_WRITE_MISS_W
- * @brief WRITE_MISS CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_WRITE_MISS_W 32
-/**
- * @def IOB_CACHE_IOB_CSRS_RST_CNTRS_W
- * @brief RST_CNTRS CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_RST_CNTRS_W 8
-/**
- * @def IOB_CACHE_IOB_CSRS_INVALIDATE_W
- * @brief INVALIDATE CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_INVALIDATE_W 8
-/**
- * @def IOB_CACHE_IOB_CSRS_VERSION_W
- * @brief version CSR Width.
- */
-#define IOB_CACHE_IOB_CSRS_VERSION_W 16
+#include "iob_cache_iob_csrs_conf.h"
 
 // Base Address
 /**
@@ -236,12 +114,13 @@ void iob_cache_iob_csrs_set_RST_CNTRS(uint8_t value);
 void iob_cache_iob_csrs_set_INVALIDATE(uint8_t value);
 /**
  * @brief Get version value.
- * Product version. This 16-bit register uses nibbles to represent decimal
- * numbers using their binary values. The two most significant nibbles represent
- * the integral part of the version, and the two least significant nibbles
- * represent the decimal part. For example V12.34 is represented by 0x1234.
- * @return uint16_t version value.
+ * Product version in SemVer format. This 24-bit register uses nibbles to
+ * represent decimal numbers using their binary values. The two most significant
+ * nibbles represent the major part of the version, followed by two nibbles that
+ * represent the minor part. The two least significant nibbles represent the
+ * patch version. For example V12.34.56 is represented by 0x123456.
+ * @return uint32_t version value.
  */
-uint16_t iob_cache_iob_csrs_get_version();
+uint32_t iob_cache_iob_csrs_get_version();
 
 #endif // H_IOB_CACHE_IOB_CSRS__CSRS_H

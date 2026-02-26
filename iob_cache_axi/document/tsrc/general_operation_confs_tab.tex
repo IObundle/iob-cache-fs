@@ -1,13 +1,13 @@
-% SPDX-FileCopyrightText: 2025 IObundle, Lda
+% SPDX-FileCopyrightText: 2026 IObundle, Lda
 %
 % SPDX-License-Identifier: MIT
 %
-% Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+% Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
 
-LRU & M & ? & 0 & ? & Least Recently Used -- more resources intensive - N*log2(N) bits per cache line - Uses counters \\ \hline
+LRU & M & ? & 0 & ? & Least Recently Used -- more resources intensive - N*log2(N) bits per cache line - Uses counters \\* \nobreakhline
 \rowcolor{iob-blue}
-PLRU\_MRU & M & ? & 1 & ? & bit-based Pseudo-Least-Recently-Used, a simpler replacement policy than LRU, using a much lower complexity (lower resources) - N bits per cache line \\ \hline
-PLRU\_TREE & M & ? & 2 & ? & tree-based Pseudo-Least-Recently-Used, uses a tree that updates after any way received an hit, and points towards the oposing one. Uses less resources than bit-pseudo-lru - N-1 bits per cache line \\ \hline
+PLRU\_MRU & M & ? & 1 & ? & bit-based Pseudo-Least-Recently-Used, a simpler replacement policy than LRU, using a much lower complexity (lower resources) - N bits per cache line \\* \nobreakhline
+PLRU\_TREE & M & ? & 2 & ? & tree-based Pseudo-Least-Recently-Used, uses a tree that updates after any way received an hit, and points towards the oposing one. Uses less resources than bit-pseudo-lru - N-1 bits per cache line \\* \nobreakhline
 \rowcolor{iob-blue}
 WRITE\_THROUGH & M & ? & 0 & ? & write-through not allocate: implements a write-through buffer \\ \hline
 WRITE\_BACK & M & ? & 1 & ? & write-back allocate: implementes a dirty-memory \\ \hline
@@ -18,7 +18,7 @@ FE\_ADDR\_W & P & 1 & 24 & 64 & Front-end address width (log2): defines the tota
 FE\_DATA\_W & P & 32 & 32 & 64 & Front-end data width (log2): this parameter allows supporting processing elements with various data widths. \\ \hline
 BE\_ADDR\_W & P & 1 & 24 &  & Back-end address width (log2): the value of this parameter must be equal or greater than FE\_ADDR\_W to match the width of the back-end interface, but the address space is still dictated by ADDR\_W. \\ \hline
 \rowcolor{iob-blue}
-BE\_DATA\_W & P & 32 & 32 & 256 & Back-end data width (log2): the value of this parameter must be an integer  multiple \$k \\geq 1\$ of DATA\_W. If \$k\textgreater 1\$, the memory controller can operate at a frequency higher than the cache's frequency. Typically, the memory controller has an asynchronous FIFO interface, so that it can sequentially process multiple commands received in paralell from the cache's back-end interface.  \\ \hline
+BE\_DATA\_W & P & 32 & 32 & 256 & Back-end data width (log2): the value of this parameter must be an integer  multiple \$k\textgreater =1\$ of DATA\_W. If \$k\textgreater 1\$, the memory controller can operate at a frequency higher than the cache's frequency. Typically, the memory controller has an asynchronous FIFO interface, so that it can sequentially process multiple commands received in paralell from the cache's back-end interface.  \\ \hline
 NWAYS\_W & P & 0 & 1 & 8 & Number of cache ways (log2): the miminum is 0 for a directly mapped cache; the default is 1 for a two-way cache; the maximum is limited by the desired maximum operating frequency, which degrades with the number of ways.  \\ \hline
 \rowcolor{iob-blue}
 NLINES\_W & P &  & 7 &  & Line offset width (log2): the value of this parameter equals the number of cache lines, given by 2**NLINES\_W. \\ \hline
@@ -40,3 +40,4 @@ AXI\_LEN\_W & P & 0 & 4 & 32 & AXI length \\ \hline
 AXI\_ADDR\_W & P & 0 & BE\_ADDR\_W & 32 & AXI address width \\ \hline
 \rowcolor{iob-blue}
 AXI\_DATA\_W & P & 0 & BE\_DATA\_W & 32 & AXI data width \\ \hline
+VERSION & M & NA & 24'h000701 & NA & Product version in SemVer format. This 24-bit macro uses nibbles to represent decimal numbers using their binary values. The two most significant nibbles represent the major part of the version, followed by two nibbles that represent the minor part. The two least significant nibbles represent the patch version. For example V12.34.56 is represented by 0x123456. \\

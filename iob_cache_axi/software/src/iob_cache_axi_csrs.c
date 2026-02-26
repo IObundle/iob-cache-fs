@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: 2025 IObundle, Lda
+ * SPDX-FileCopyrightText: 2026 IObundle, Lda
  *
  * SPDX-License-Identifier: MIT
  *
- * Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+ * Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
  */
 
 #include "iob_cache_axi_csrs.h"
@@ -63,7 +63,7 @@ void iob_cache_axi_csrs_set_INVALIDATE(uint8_t value) {
             IOB_CACHE_AXI_CSRS_INVALIDATE_W, value);
 }
 
-uint16_t iob_cache_axi_csrs_get_version() {
+uint32_t iob_cache_axi_csrs_get_version() {
   return iob_read(base + IOB_CACHE_AXI_CSRS_VERSION_ADDR,
                   IOB_CACHE_AXI_CSRS_VERSION_W);
 }

@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: 2025 IObundle, Lda
+ * SPDX-FileCopyrightText: 2026 IObundle, Lda
  *
  * SPDX-License-Identifier: MIT
  *
- * Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+ * Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
  */
 
 #ifndef H_IOB_CACHE_AXI_CONF_H
@@ -40,6 +40,6 @@
 #define IOB_CACHE_AXI_AXI_LEN_W 4
 #define IOB_CACHE_AXI_AXI_ADDR_W BE_ADDR_W
 #define IOB_CACHE_AXI_AXI_DATA_W BE_DATA_W
-#define IOB_CACHE_AXI_VERSION 0x0071
+#define IOB_CACHE_AXI_VERSION 0x000701
 
 #endif // H_IOB_CACHE_AXI_CONF_H

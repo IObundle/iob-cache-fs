@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-SPDX-FileCopyrightText: 2025 IObundle, Lda
+SPDX-FileCopyrightText: 2026 IObundle, Lda
 
 SPDX-License-Identifier: MIT
 
-Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
 -->
 
 <ipxact:busDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ipxact="http://www.accellera.org/XMLSchema/IPXACT/1685-2022" xmlns:kactus2="http://kactus2.cs.tut.fi" xsi:schemaLocation="http://www.accellera.org/XMLSchema/IPXACT/1685-2022 http://www.accellera.org/XMLSchema/IPXACT/1685-2022/index.xsd">

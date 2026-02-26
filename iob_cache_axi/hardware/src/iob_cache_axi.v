@@ -1,8 +1,8 @@
-// SPDX-FileCopyrightText: 2025 IObundle, Lda
+// SPDX-FileCopyrightText: 2026 IObundle, Lda
 //
 // SPDX-License-Identifier: MIT
 //
-// Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+// Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
 
 `timescale 1ns / 1ps
 `include "iob_cache_axi_conf.vh"
@@ -37,7 +37,7 @@ module iob_cache_axi #(
    input                         clk_i,
    input                         cke_i,
    input                         arst_i,
-   // iob_s: Front-end interface
+   // iob_s: Front-end interface, when selecting the IOb FE interface.
    input                         iob_valid_i,
    input      [      ADDR_W-1:0] iob_addr_i,
    input      [      DATA_W-1:0] iob_wdata_i,
@@ -50,7 +50,7 @@ module iob_cache_axi #(
    output reg                    invalidate_o,
    input                         wtb_empty_i,
    output reg                    wtb_empty_o,
-   // axi_m: Back-end interface
+   // axi_m: Back-end interface, when selecting the AXI4 BE interface.
    output     [  AXI_ADDR_W-1:0] axi_araddr_o,
    output                        axi_arvalid_o,
    input                         axi_arready_i,
@@ -88,6 +88,14 @@ module iob_cache_axi #(
    input      [    AXI_ID_W-1:0] axi_bid_i
 );
 
+   // Internal IOb wire
+   wire                                                                      iob_valid;
+   wire [                                                        ADDR_W-1:0] iob_addr;
+   wire [                                                        DATA_W-1:0] iob_wdata;
+   wire [                                                      DATA_W/8-1:0] iob_wstrb;
+   wire                                                                      iob_rvalid;
+   wire [                                                        DATA_W-1:0] iob_rdata;
+   wire                                                                      iob_ready;
    // Cache memory front-end interface
    wire                                                                      data_req;
    wire [                                       FE_ADDR_W - FE_NBYTES_W-1:0] data_addr;
@@ -173,6 +181,29 @@ module iob_cache_axi #(
    endgenerate
 
 
+   // Convert front-end interface into internal IOb port
+   iob_universal_converter_iob_iob #(
+      .ADDR_W(ADDR_W),
+      .DATA_W(DATA_W)
+   ) iob_universal_converter (
+      // s_s port: Subordinate port
+      .iob_valid_i (iob_valid_i),
+      .iob_addr_i  (iob_addr_i),
+      .iob_wdata_i (iob_wdata_i),
+      .iob_wstrb_i (iob_wstrb_i),
+      .iob_rvalid_o(iob_rvalid_o),
+      .iob_rdata_o (iob_rdata_o),
+      .iob_ready_o (iob_ready_o),
+      // m_m port: Manager port
+      .iob_valid_o (iob_valid),
+      .iob_addr_o  (iob_addr),
+      .iob_wdata_o (iob_wdata),
+      .iob_wstrb_o (iob_wstrb),
+      .iob_rvalid_i(iob_rvalid),
+      .iob_rdata_i (iob_rdata),
+      .iob_ready_i (iob_ready)
+   );
+
    // This IOb interface is connected to a processor or any other processing element that needs a cache buffer to improve the performance of accessing a slower but larger memory
    iob_cache_front_end #(
       .ADDR_W  (ADDR_W),
@@ -184,13 +215,13 @@ module iob_cache_axi #(
       .cke_i           (cke_i),
       .arst_i          (arst_i),
       // iob_s port: Front-end interface
-      .iob_valid_i     (iob_valid_i),
-      .iob_addr_i      (iob_addr_i),
-      .iob_wdata_i     (iob_wdata_i),
-      .iob_wstrb_i     (iob_wstrb_i),
-      .iob_rvalid_o    (iob_rvalid_o),
-      .iob_rdata_o     (iob_rdata_o),
-      .iob_ready_o     (iob_ready_o),
+      .iob_valid_i     (iob_valid),
+      .iob_addr_i      (iob_addr),
+      .iob_wdata_i     (iob_wdata),
+      .iob_wstrb_i     (iob_wstrb),
+      .iob_rvalid_o    (iob_rvalid),
+      .iob_rdata_o     (iob_rdata),
+      .iob_ready_o     (iob_ready),
       // cache_mem_io port: Cache memory front-end interface
       .data_req_o      (data_req),
       .data_addr_o     (data_addr),

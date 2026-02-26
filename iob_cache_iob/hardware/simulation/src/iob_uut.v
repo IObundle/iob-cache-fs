@@ -1,8 +1,8 @@
-// SPDX-FileCopyrightText: 2025 IObundle, Lda
+// SPDX-FileCopyrightText: 2026 IObundle, Lda
 //
 // SPDX-License-Identifier: MIT
 //
-// Py2HWSW Version 0.81 has generated this code (https://github.com/IObundle/py2hwsw).
+// Py2HWSW Version 0.81.0 has generated this code (https://github.com/IObundle/py2hwsw).
 
 `timescale 1ns / 1ps
 `include "iob_uut_conf.vh"
@@ -47,6 +47,14 @@ module iob_uut #(
     wire invalidate_o_int;
     wire wtb_empty_i_int;
     wire wtb_empty_o_int;
+// Testbench cache front-end bus
+    wire internal_iob_valid;
+    wire [ADDR_W-1:0] internal_iob_addr;
+    wire [32-1:0] internal_iob_wdata;
+    wire [32/8-1:0] internal_iob_wstrb;
+    wire internal_iob_rvalid;
+    wire [32-1:0] internal_iob_rdata;
+    wire internal_iob_ready;
 // IOb bus to connect Cache back end to memory
     wire be_iob_valid;
     wire [BE_ADDR_W-1:0] be_iob_addr;
@@ -96,15 +104,15 @@ module iob_uut #(
         .clk_i(clk_i),
         .cke_i(cke_i),
         .arst_i(arst_i),
-        // iob_s port: Front-end interface
-        .iob_valid_i(iob_valid_i),
-        .iob_addr_i(iob_addr_i),
-        .iob_wdata_i(iob_wdata_i),
-        .iob_wstrb_i(iob_wstrb_i),
-        .iob_rvalid_o(iob_rvalid_o),
-        .iob_rdata_o(iob_rdata_o),
-        .iob_ready_o(iob_ready_o),
-        // iob_m port: Back-end interface
+        // iob_s port: Front-end interface, when selecting the IOb FE interface.
+        .iob_valid_i(internal_iob_valid),
+        .iob_addr_i(internal_iob_addr),
+        .iob_wdata_i(internal_iob_wdata),
+        .iob_wstrb_i(internal_iob_wstrb),
+        .iob_rvalid_o(internal_iob_rvalid),
+        .iob_rdata_o(internal_iob_rdata),
+        .iob_ready_o(internal_iob_ready),
+        // iob_m port: Back-end interface, when selecting the IOb BE interface.
         .be_iob_valid_o(be_iob_valid),
         .be_iob_addr_o(be_iob_addr),
         .be_iob_wdata_o(be_iob_wdata),
@@ -117,6 +125,29 @@ module iob_uut #(
         .invalidate_o(invalidate_o_int),
         .wtb_empty_i(wtb_empty_i_int),
         .wtb_empty_o(wtb_empty_o_int)
+        );
+
+            // Convert IOb port from testbench into correct interface for Cache front-end bus
+        iob_universal_converter_iob_iob #(
+        .ADDR_W(ADDR_W),
+        .DATA_W(DATA_W)
+    ) iob_universal_converter (
+            // s_s port: Subordinate port
+        .iob_valid_i(iob_valid_i),
+        .iob_addr_i(iob_addr_i),
+        .iob_wdata_i(iob_wdata_i),
+        .iob_wstrb_i(iob_wstrb_i),
+        .iob_rvalid_o(iob_rvalid_o),
+        .iob_rdata_o(iob_rdata_o),
+        .iob_ready_o(iob_ready_o),
+        // m_m port: Manager port
+        .iob_valid_o(internal_iob_valid),
+        .iob_addr_o(internal_iob_addr),
+        .iob_wdata_o(internal_iob_wdata),
+        .iob_wstrb_o(internal_iob_wstrb),
+        .iob_rvalid_i(internal_iob_rvalid),
+        .iob_rdata_i(internal_iob_rdata),
+        .iob_ready_i(internal_iob_ready)
         );
 
             // Default description
